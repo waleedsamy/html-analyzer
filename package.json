@@ -1,0 +1,34 @@
+{
+  "name": "html-analyzer",
+  "version": "1.0.0",
+  "description": "Service to provide statistics about html page content",
+  "main": "index.js",
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "mocha": "^3.2.0",
+    "node-mocks-http": "^1.6.1",
+    "should": "^11.2.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waleedsamy/html-analyzer.git"
+  },
+  "keywords": [
+    "html",
+    "cheeriojs",
+    "nodejs"
+  ],
+  "author": "Waleed Samy <waleedsamy634@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/waleedsamy/html-analyzer/issues"
+  },
+  "homepage": "https://github.com/waleedsamy/html-analyzer#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0"
+  }
+}
