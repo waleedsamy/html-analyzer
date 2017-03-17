@@ -1,5 +1,6 @@
 var should = require('should'),
     nock = require('nock'),
+    cheerio = require('cheerio'),
     analyzer = require('../../lib/analyzer');
 
 var github = nock('http://github.com')
@@ -24,6 +25,10 @@ var XHTML_1_0_Transitional = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Trans
 var XHTML_1_0_Frameset = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"><html></html>`;
 var XHTML_1_1 = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html></html>`;
 
+
+var HTML_WITH_TITLE = `<html><head><title>title</title></head><body></body></html>`
+var HTML_WITH_EMPTY_TITLE = `<html><head><title></title></head><body></body></html>`
+var HTML_WITH_NOT_TITLE_TAG = `<html><head></head><body></body></html>`
 
 describe('analyzer', function() {
     describe('load', function() {
@@ -107,6 +112,27 @@ describe('analyzer', function() {
         it('XHTML 1.1', function(done) {
             analyzer.extractHtmlVersion(XHTML_1_1).then(function(doctype) {
                 doctype.should.be.eql('XHTML 1.1');
+                done();
+            });
+        });
+    });
+
+    describe('extractPageTitle', function() {
+        it('extract existed title', function(done) {
+            analyzer.extractPageTitle(cheerio.load(HTML_WITH_TITLE)).then(function(title) {
+                title.should.be.eql('title');
+                done();
+            });
+        });
+        it('handle empty title', function(done) {
+            analyzer.extractPageTitle(cheerio.load(HTML_WITH_EMPTY_TITLE)).then(function(title) {
+                title.should.be.eql('');
+                done();
+            });
+        });
+        it('handle unexisted title tag', function(done) {
+            analyzer.extractPageTitle(cheerio.load(HTML_WITH_NOT_TITLE_TAG)).then(function(title) {
+                title.should.be.eql('');
                 done();
             });
         });
