@@ -10,6 +10,21 @@ var notexisted = nock('http://example.com')
     .get('/notexisted')
     .reply(404);
 
+var HTML5 = `<!DOCTYPE html><html><head></head><body></body></html>`;
+var HTML5_ML = `
+
+<!DOCTYPE html>
+
+  <html><head></head><body></body></html>`;
+var HTML_4_01_Strict = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html></html>`;
+var HTML_4_01_Transitional = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html></html>`;
+var HTML_4_01_Frameset = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"><html></html>`;
+var XHTML_1_0_Strict = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html></html>`;
+var XHTML_1_0_Transitional = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html></html>`;
+var XHTML_1_0_Frameset = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"><html></html>`;
+var XHTML_1_1 = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html></html>`;
+
+
 describe('analyzer', function() {
     describe('load', function() {
         it('load valid url', function(done) {
@@ -26,4 +41,75 @@ describe('analyzer', function() {
             });
         });
     });
+
+    describe('extractHtmlVersion', function() {
+        it('detect HTML version when document is minified', function(done) {
+            analyzer.extractHtmlVersion(HTML5).then(function(doctype) {
+                done();
+            });
+        });
+
+        it('detect HTML version even whin newline exist before or after doctype tag', function(done) {
+            analyzer.extractHtmlVersion(HTML5_ML).then(function(doctype) {
+                done();
+            });
+        });
+
+        it('detect HTML 5', function(done) {
+            analyzer.extractHtmlVersion(HTML5).then(function(doctype) {
+                doctype.should.be.eql('HTML 5');
+                done();
+            });
+        });
+
+        it('detect HTML 4.01 Strict', function(done) {
+            analyzer.extractHtmlVersion(HTML_4_01_Strict).then(function(doctype) {
+                doctype.should.be.eql('HTML 4.01');
+                done();
+            });
+        });
+
+        it('HTML 4.01 Transitional', function(done) {
+            analyzer.extractHtmlVersion(HTML_4_01_Transitional).then(function(doctype) {
+                doctype.should.be.eql('HTML 4.01 Transitional');
+                done();
+            });
+        });
+
+        it('HTML 4.01 Frameset', function(done) {
+            analyzer.extractHtmlVersion(HTML_4_01_Frameset).then(function(doctype) {
+                doctype.should.be.eql('HTML 4.01 Frameset');
+                done();
+            });
+        });
+
+        it('XHTML 1.0 Strict', function(done) {
+            analyzer.extractHtmlVersion(XHTML_1_0_Strict).then(function(doctype) {
+                doctype.should.be.eql('XHTML 1.0 Strict');
+                done();
+            });
+        });
+
+        it('XHTML 1.0 Transitional', function(done) {
+            analyzer.extractHtmlVersion(XHTML_1_0_Transitional).then(function(doctype) {
+                doctype.should.be.eql('XHTML 1.0 Transitional');
+                done();
+            });
+        });
+
+        it('XHTML 1.0 Frameset', function(done) {
+            analyzer.extractHtmlVersion(XHTML_1_0_Frameset).then(function(doctype) {
+                doctype.should.be.eql('XHTML 1.0 Frameset');
+                done();
+            });
+        });
+
+        it('XHTML 1.1', function(done) {
+            analyzer.extractHtmlVersion(XHTML_1_1).then(function(doctype) {
+                doctype.should.be.eql('XHTML 1.1');
+                done();
+            });
+        });
+    });
+
 });

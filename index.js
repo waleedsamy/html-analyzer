@@ -25,15 +25,28 @@ app.post('/', urlencodedParser, function(req, res) {
         });
     }
 
-    analyzer.load(req.body.url).then(function(html) {
-        httpRequestsTotal.inc({
-            code: 501,
-            method: 'post'
-        });
-        res.status(501).json({
-            msg: 'html-analyzer to be build...',
-            url: req.body.url,
-            html: html
+
+    analyzer.load(req.body.url).then(function($) {
+        analyzer.extractHtmlVersion($.html()).then(function(version) {
+            httpRequestsTotal.inc({
+                code: 501,
+                method: 'post'
+            });
+            res.status(501).json({
+                msg: 'html-analyzer to be build...',
+                url: req.body.url,
+                html_version: version,
+                html: $.html()
+            });
+        }).otherwise(function(err) {
+            httpRequestsTotal.inc({
+                code: 501,
+                method: 'post'
+            });
+            res.status(501).json({
+                msg: err,
+                url: req.body.url
+            });
         });
     }).otherwise(function(err) {
         httpRequestsTotal.inc({
