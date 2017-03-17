@@ -29,6 +29,10 @@
   },
   "homepage": "https://github.com/waleedsamy/html-analyzer#readme",
   "dependencies": {
-    "cheerio": "^0.22.0"
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2",
+    "prom-client": "^7.1.0",
+    "winston": "^2.3.1"
   }
 }

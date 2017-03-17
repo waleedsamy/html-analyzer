@@ -8,6 +8,7 @@
   $ yarn install
   $ npm test
   $ npm start
+  $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" 'url=https://github.com/login' "http://localhost:3000/"
 ```
 
 ##### Information will be provided by the service
