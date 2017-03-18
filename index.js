@@ -2,6 +2,7 @@
 var express = require('express'),
     prom = require('prom-client'),
     bodyParser = require('body-parser'),
+    when = require('when'),
     winston = require('./logger'),
     analyzer = require('./lib/analyzer'),
     app = express(),
@@ -27,25 +28,21 @@ app.post('/', urlencodedParser, function(req, res) {
 
 
     analyzer.load(req.body.url).then(function($) {
-        analyzer.extractHtmlVersion($.html()).then(function(version) {
+        when.all([
+            analyzer.extractHtmlVersion($),
+            analyzer.extractPageTitle($),
+            analyzer.extractHeadings($)
+        ]).then(function(results) {
             httpRequestsTotal.inc({
-                code: 501,
+                code: 200,
                 method: 'post'
             });
-            res.status(501).json({
-                msg: 'html-analyzer to be build...',
+            res.status(200).json({
+                msg: 'html-analyzer work in progress...',
                 url: req.body.url,
-                html_version: version,
-                html: $.html()
-            });
-        }).otherwise(function(err) {
-            httpRequestsTotal.inc({
-                code: 501,
-                method: 'post'
-            });
-            res.status(501).json({
-                msg: err,
-                url: req.body.url
+                html_version: results[0],
+                title: results[1],
+                headings: results[2]
             });
         });
     }).otherwise(function(err) {

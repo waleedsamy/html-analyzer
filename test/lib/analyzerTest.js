@@ -30,6 +30,9 @@ var HTML_WITH_TITLE = `<html><head><title>title</title></head><body></body></htm
 var HTML_WITH_EMPTY_TITLE = `<html><head><title></title></head><body></body></html>`
 var HTML_WITH_NOT_TITLE_TAG = `<html><head></head><body></body></html>`
 
+
+var HTML_PAGE_WITH_HEADINGS = `<html><head></head><body><h1>h1 1</h1><h1>h1 2</h1><h2>h2</h2><h6>h6</h6><h6>h6</h6><h6>h6</h6></body></html>`
+
 describe('analyzer', function() {
     describe('load', function() {
         it('load valid url', function(done) {
@@ -49,68 +52,68 @@ describe('analyzer', function() {
 
     describe('extractHtmlVersion', function() {
         it('detect HTML version when document is minified', function(done) {
-            analyzer.extractHtmlVersion(HTML5).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(HTML5)).then(function(doctype) {
                 done();
             });
         });
 
         it('detect HTML version even whin newline exist before or after doctype tag', function(done) {
-            analyzer.extractHtmlVersion(HTML5_ML).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(HTML5_ML)).then(function(doctype) {
                 done();
             });
         });
 
         it('detect HTML 5', function(done) {
-            analyzer.extractHtmlVersion(HTML5).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(HTML5)).then(function(doctype) {
                 doctype.should.be.eql('HTML 5');
                 done();
             });
         });
 
         it('detect HTML 4.01 Strict', function(done) {
-            analyzer.extractHtmlVersion(HTML_4_01_Strict).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(HTML_4_01_Strict)).then(function(doctype) {
                 doctype.should.be.eql('HTML 4.01');
                 done();
             });
         });
 
         it('HTML 4.01 Transitional', function(done) {
-            analyzer.extractHtmlVersion(HTML_4_01_Transitional).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(HTML_4_01_Transitional)).then(function(doctype) {
                 doctype.should.be.eql('HTML 4.01 Transitional');
                 done();
             });
         });
 
         it('HTML 4.01 Frameset', function(done) {
-            analyzer.extractHtmlVersion(HTML_4_01_Frameset).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(HTML_4_01_Frameset)).then(function(doctype) {
                 doctype.should.be.eql('HTML 4.01 Frameset');
                 done();
             });
         });
 
         it('XHTML 1.0 Strict', function(done) {
-            analyzer.extractHtmlVersion(XHTML_1_0_Strict).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(XHTML_1_0_Strict)).then(function(doctype) {
                 doctype.should.be.eql('XHTML 1.0 Strict');
                 done();
             });
         });
 
         it('XHTML 1.0 Transitional', function(done) {
-            analyzer.extractHtmlVersion(XHTML_1_0_Transitional).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(XHTML_1_0_Transitional)).then(function(doctype) {
                 doctype.should.be.eql('XHTML 1.0 Transitional');
                 done();
             });
         });
 
         it('XHTML 1.0 Frameset', function(done) {
-            analyzer.extractHtmlVersion(XHTML_1_0_Frameset).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(XHTML_1_0_Frameset)).then(function(doctype) {
                 doctype.should.be.eql('XHTML 1.0 Frameset');
                 done();
             });
         });
 
         it('XHTML 1.1', function(done) {
-            analyzer.extractHtmlVersion(XHTML_1_1).then(function(doctype) {
+            analyzer.extractHtmlVersion(cheerio.load(XHTML_1_1)).then(function(doctype) {
                 doctype.should.be.eql('XHTML 1.1');
                 done();
             });
@@ -133,6 +136,20 @@ describe('analyzer', function() {
         it('handle unexisted title tag', function(done) {
             analyzer.extractPageTitle(cheerio.load(HTML_WITH_NOT_TITLE_TAG)).then(function(title) {
                 title.should.be.eql('');
+                done();
+            });
+        });
+    });
+
+    describe('extractHeadings', function() {
+        it('extract all headings', function(done) {
+            analyzer.extractHeadings(cheerio.load(HTML_PAGE_WITH_HEADINGS)).then(function(headings) {
+                headings.h1.should.be.eql(2);
+                headings.h2.should.be.eql(1);
+                headings.h3.should.be.eql(0);
+                headings.h4.should.be.eql(0);
+                headings.h5.should.be.eql(0);
+                headings.h6.should.be.eql(3);
                 done();
             });
         });
