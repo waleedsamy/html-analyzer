@@ -31,7 +31,8 @@ app.post('/', urlencodedParser, function(req, res) {
         when.all([
             analyzer.extractHtmlVersion($),
             analyzer.extractPageTitle($),
-            analyzer.extractHeadings($)
+            analyzer.extractHeadings($),
+            analyzer.extractHypermediaLinks($)
         ]).then(function(results) {
             httpRequestsTotal.inc({
                 code: 200,
@@ -42,7 +43,8 @@ app.post('/', urlencodedParser, function(req, res) {
                 url: req.body.url,
                 html_version: results[0],
                 title: results[1],
-                headings: results[2]
+                headings: results[2],
+                links: results[3]
             });
         });
     }).otherwise(function(err) {

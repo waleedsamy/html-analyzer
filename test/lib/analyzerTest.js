@@ -6,7 +6,6 @@ var should = require('should'),
 var github = nock('http://github.com')
     .get('/login')
     .reply(200, '<html><head></head><body></body></html>');
-
 var notexisted = nock('http://example.com')
     .get('/notexisted')
     .reply(404);
@@ -25,13 +24,24 @@ var XHTML_1_0_Transitional = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Trans
 var XHTML_1_0_Frameset = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"><html></html>`;
 var XHTML_1_1 = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html></html>`;
 
-
 var HTML_WITH_TITLE = `<html><head><title>title</title></head><body></body></html>`
 var HTML_WITH_EMPTY_TITLE = `<html><head><title></title></head><body></body></html>`
 var HTML_WITH_NOT_TITLE_TAG = `<html><head></head><body></body></html>`
 
-
 var HTML_PAGE_WITH_HEADINGS = `<html><head></head><body><h1>h1 1</h1><h1>h1 2</h1><h2>h2</h2><h6>h6</h6><h6>h6</h6><h6>h6</h6></body></html>`
+
+var HTML_PAGE_WITH_EXTERNAL_LINKS = `<html><head></head><body><a href="https://github.com/">github</a></body></html>`
+var HTML_PAGE_WITH_INTTERNAL_LINKS = `<html><head></head><body><a href="/meinung/">meinung</a></body></html>`
+var HTML_PAGE_WITH_MIXED_LINKS =
+    `<html>
+    <head></head>
+      <body>
+        <a href="https://github.com/">github</a>
+        <a href="https://google.com/">google</a>
+        <a href="/meinspiegel/">meinspiegel</a>
+        <a href="/meinung/">meinung</a>
+      </body>
+    </html>`
 
 describe('analyzer', function() {
     describe('load', function() {
@@ -150,6 +160,42 @@ describe('analyzer', function() {
                 headings.h4.should.be.eql(0);
                 headings.h5.should.be.eql(0);
                 headings.h6.should.be.eql(3);
+                done();
+            });
+        });
+    });
+
+    describe('extractHypermediaLinks', function() {
+        it('extract external links', function(done) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_EXTERNAL_LINKS)).then(function(results) {
+                results.external.links.should.containEql("https://github.com/");
+                results.external.count.should.eql(1);
+                results.internal.count.should.eql(0);
+                done();
+            });
+        });
+
+        it('extract internal links', function(done) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_INTTERNAL_LINKS)).then(function(results) {
+                results.internal.links.should.containEql("/meinung/");
+                results.internal.count.should.eql(1);
+                results.external.count.should.eql(0);
+                done();
+            });
+        });
+
+        it('extract mixed links types', function(done) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_MIXED_LINKS)).then(function(results) {
+                results.external.links.should.be.instanceof(Array).and.have.lengthOf(2);
+                results.external.links.should.containEql("https://google.com/");
+                results.external.links.should.containEql("https://github.com/");
+                results.external.count.should.eql(2);
+
+                results.internal.links.should.be.instanceof(Array).and.have.lengthOf(2);
+                results.internal.links.should.containEql("/meinspiegel/");
+                results.internal.links.should.containEql("/meinung/");
+                results.internal.count.should.eql(2);
+
                 done();
             });
         });
