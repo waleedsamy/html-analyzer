@@ -32,7 +32,8 @@ app.post('/', urlencodedParser, function(req, res) {
             analyzer.extractHtmlVersion($),
             analyzer.extractPageTitle($),
             analyzer.extractHeadings($),
-            analyzer.extractHypermediaLinks($)
+            analyzer.extractHypermediaLinks($),
+            analyzer.containsLoginForm($)
         ]).then(function(results) {
             httpRequestsTotal.inc({
                 code: 200,
@@ -44,7 +45,8 @@ app.post('/', urlencodedParser, function(req, res) {
                 html_version: results[0],
                 title: results[1],
                 headings: results[2],
-                links: results[3]
+                links: results[3],
+                loginFormFound: results[4]
             });
         });
     }).otherwise(function(err) {
