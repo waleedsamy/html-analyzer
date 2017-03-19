@@ -14,6 +14,7 @@ const HTTP_REQUESTS_TOTAL = 'http_requests_total';
 
 var httpRequestsTotal = new prom.Counter(HTTP_REQUESTS_TOTAL, 'count of http requests', ['code', 'method']);
 
+app.use(express.static('public'))
 
 app.post('/', urlencodedParser, function(req, res) {
     if (!req.body || !req.body.url) {

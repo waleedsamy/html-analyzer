@@ -8,7 +8,8 @@
   $ yarn install
   $ npm test
   $ npm start
-  $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" 'url=https://github.com/login' "http://localhost:3000/"
+  # open your browser at http://localhost:3000/
+  # curl -X POST  -d 'url=https://www.spiegel.de/meinspiegel/login.html&=' "http://localhost:3000/"
 ```
 
 ##### Information will be provided by the service
