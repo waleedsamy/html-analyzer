@@ -32,6 +32,7 @@
                     <li>Number of heading grouped by heading level</li>
                     <li>Number of hypermedia links in the document, grouped by internal and external links</li>
                     <li>Does page contain login form?</li>
+                    <li>provide validation that each collected links is available via HTTP(S)</li>
                 </ul>
             </p>
         </div>
@@ -100,9 +101,21 @@
                         }
 
                         if (key === 'links') {
-                            for (let l in res['links']) {
-                                console.log(JSON.stringify(l));
-                                add_row(`${l} links`, res['links'][l]['count']);
+                            add_row('===================', '===================');
+                            let internal_links = res['links']['internal'];
+                            let external_links = res['links']['external'];
+                            add_row('external links', external_links.count)
+                            add_row('internal links', internal_links.count)
+                            add_row('===================', '===================');
+                            if (external_links.links.length > 0 && external_links.links[0].https) {
+                                external_links.links.forEach(function(l) {
+                                    if (l.https === 'supported') {
+                                        add_row(l.link, `${l.https}`);
+                                    } else {
+                                        add_row(l.link, `${l.https}, ${l.reason}`);
+                                    }
+                                });
+                                add_row('===================', '===================');
                             }
                         }
                     }

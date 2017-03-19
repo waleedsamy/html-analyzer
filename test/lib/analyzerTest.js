@@ -167,7 +167,7 @@ describe('analyzer', function() {
 
     describe('extractHypermediaLinks', function() {
         it('extract external links', function(done) {
-            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_EXTERNAL_LINKS)).then(function(results) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_EXTERNAL_LINKS), false).then(function(results) {
                 results.external.links.should.containEql("https://github.com/");
                 results.external.count.should.eql(1);
                 results.internal.count.should.eql(0);
@@ -176,7 +176,7 @@ describe('analyzer', function() {
         });
 
         it('extract internal links', function(done) {
-            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_INTTERNAL_LINKS)).then(function(results) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_INTTERNAL_LINKS), false).then(function(results) {
                 results.internal.links.should.containEql("/meinung/");
                 results.internal.count.should.eql(1);
                 results.external.count.should.eql(0);
@@ -185,10 +185,44 @@ describe('analyzer', function() {
         });
 
         it('extract mixed links types', function(done) {
-            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_MIXED_LINKS)).then(function(results) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_MIXED_LINKS), false).then(function(results) {
                 results.external.links.should.be.instanceof(Array).and.have.lengthOf(2);
                 results.external.links.should.containEql("https://google.com/");
                 results.external.links.should.containEql("https://github.com/");
+                results.external.count.should.eql(2);
+
+                results.internal.links.should.be.instanceof(Array).and.have.lengthOf(2);
+                results.internal.links.should.containEql("/meinspiegel/");
+                results.internal.links.should.containEql("/meinung/");
+                results.internal.count.should.eql(2);
+
+                done();
+            });
+        });
+
+        it('extract external links with https support checking', function(done) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_EXTERNAL_LINKS), true).then(function(results) {
+                results.external.links.should.containEql({
+                    link: 'https://github.com/',
+                    https: 'supported'
+                });
+                results.external.count.should.eql(1);
+                results.internal.count.should.eql(0);
+                done();
+            });
+        });
+
+        it('extract mixed links types with https support checking', function(done) {
+            analyzer.extractHypermediaLinks(cheerio.load(HTML_PAGE_WITH_MIXED_LINKS), true).then(function(results) {
+                results.external.links.should.be.instanceof(Array).and.have.lengthOf(2);
+                results.external.links.should.containEql({
+                    link: 'https://google.com/',
+                    https: 'supported'
+                });
+                results.external.links.should.containEql({
+                    link: 'https://github.com/',
+                    https: 'supported'
+                });
                 results.external.count.should.eql(2);
 
                 results.internal.links.should.be.instanceof(Array).and.have.lengthOf(2);
