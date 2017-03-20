@@ -1,0 +1,520 @@
+{
+  "msg": "html-analyzer, source available at https://github.com/waleedsamy/html-analyzer",
+  "url": "https://www.spiegel.de/meinspiegel/login.html",
+  "html_version": "HTML 4.01 Transitional",
+  "title": "Mein SPIEGEL - SPIEGEL ONLINE",
+  "headings": {
+    "h1": 1,
+    "h2": 1,
+    "h3": 0,
+    "h4": 2,
+    "h5": 5,
+    "h6": 0
+  },
+  "links": {
+    "external": {
+      "links": [
+        {
+          "link": "http://boersen.manager-magazin.de/mm/kurse_einzelkurs_uebersicht.htn?i=159096",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://tvprogramm.spiegel.de/",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://abo.spiegel.de/?b=SPOHNAVABO&utm_source=spon&utm_medium=text&utm_content=SPOHNAVABO&utm_campaign=navigationsleiste",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/eu/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/meinung/",
+          "https": "supported"
+        },
+        {
+          "link": "http://boersen.manager-magazin.de/spon/",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/mittelstand/",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076401&kid=1213066&bid=3962693",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076393&kid=1213025&bid=3962018",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076396&kid=1503394&bid=5108785",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3078845&kid=1600780&bid=5484066",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/story/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/elterncouch/",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3098101&kid=1896229&bid=6478263",
+          "https": "supported"
+        },
+        {
+          "link": " http://ad8.adfarm1.adition.com/redi?sid=3076398&kid=1896208&bid=6478218",
+          "https": "supported"
+        },
+        {
+          "link": "http://tippspiel.spiegel.de",
+          "https": "supported"
+        },
+        {
+          "link": "http://sportal.spiegel.de/spiegel/ergebnisse/",
+          "https": "not supported",
+          "reason": "ETIMEDOUT"
+        },
+        {
+          "link": "http://sportal.spiegel.de/spiegel/liveticker/",
+          "https": "not supported",
+          "reason": "ETIMEDOUT"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3213806&kid=1730455&bid=5921750",
+          "https": "supported"
+        },
+        {
+          "link": "http://gutenberg.spiegel.de",
+          "https": "not supported",
+          "reason": "ECONNREFUSED"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/buchrezensionen/",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3780444&kid=1926582&bid=6578510",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/daten/",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3088031&kid=1214230&bid=3966013",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/einestages/thema/zweiter_weltkrieg/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/einestages/thema/ddr/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/einestages/thema/fotografie/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/einestages/thema/film/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/einestages/thema/musik/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/einestages/archiv.html",
+          "https": "supported"
+        },
+        {
+          "link": "http://schneeundmehr.spiegel.de/",
+          "https": "not supported",
+          "reason": "ETIMEDOUT"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076396&kid=1503404&bid=5108800",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/stil_design/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/stil_mode/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/stil_kochen/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/stil_reisen/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/thema/stil_hotels/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.tv",
+          "https": "not supported",
+          "reason": "ECONNRESET"
+        },
+        {
+          "link": "http://wetter.spiegel.de/",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://boersen.manager-magazin.de",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://werkstattvergleich.spiegel.de",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://www.amazon.de/b/ref=amb_link_51544565_1?ie=UTF8&node=4206085031&pf_rd_m=A3JWKAKR8XB7XF&pf_rd_s=center-1&pf_rd_r=0Y7KSJRQ0GD1TQVBZFBX&pf_rd_t=1401&pf_rd_p=515157807&pf_rd_i=1000127753&tag=wwwspiegelde-21",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076405&kid=1212883&bid=3961306",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076403&kid=1212850&bid=3961217",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076404&kid=1212872&bid=3961268",
+          "https": "supported"
+        },
+        {
+          "link": "https://ratgeber.co2online.de/index.php?berater=ratgeberauswahl&portal_id=spiegel_online",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076397&kid=1212362&bid=3958971",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.personalmarkt.de/source-links/spiegel/serviceangebotebox.html",
+          "https": "supported"
+        },
+        {
+          "link": "http://boersen.manager-magazin.de/spon/devisen_uebersicht.htn#rechner",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://boersen.manager-magazin.de/spo_mmo/depot_portfolio.htm?u=0&p=0&k=0",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://boersen.manager-magazin.de/spo_mmo/depot_newslist.htm?u=0&p=0&k=0",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://boersen.manager-magazin.de/spon/depot_portfolio.htn",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "http://boersen.manager-magazin.de/spon/depot_newslist.htn",
+          "https": "not supported",
+          "reason": "UNTRUSTEDCERT"
+        },
+        {
+          "link": "https://www.spiegel.de/meinspiegel/register.html",
+          "https": "supported"
+        },
+        {
+          "link": "https://www.spiegel.de/meinspiegel/registercustomer.html",
+          "https": "supported"
+        },
+        {
+          "link": "https://www.spiegel.de/meinspiegel/newpassword.html",
+          "https": "supported"
+        },
+        {
+          "link": "mailto:onlineabo@spiegel.de?subject=Benutzernamen und Passwort vergessen",
+          "https": "not supported",
+          "reason": "UNKNOWN"
+        },
+        {
+          "link": "https://www.spiegel.de/meinspiegel/changedata.html",
+          "https": "supported"
+        },
+        {
+          "link": "https://www.spiegel.de/meinspiegel/mysubscriptions.html",
+          "https": "supported"
+        },
+        {
+          "link": "https://www.spiegel.de/meinspiegel/addcustomerid.html",
+          "https": "supported"
+        },
+        {
+          "link": "https://www.spiegel.de/newsletter/index.html#scrollto=box_verwalten",
+          "https": "supported"
+        },
+        {
+          "link": "http://abo.spiegel.de/de/index",
+          "https": "supported"
+        },
+        {
+          "link": "mailto:onlineabo@spiegel.de",
+          "https": "not supported",
+          "reason": "UNKNOWN"
+        },
+        {
+          "link": "http://www.spiegel.de/auto/aktuell/benzinpreisvergleich-die-guenstigste-tankstelle-in-ihrer-naehe-a-185826.html",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/auto/aktuell/bussgeldrechner-was-zu-schnelles-fahren-kostet-a-244772.html",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076397&kid=1503417&bid=5108840",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.spiegel.de/wirtschaft/service/brutto-netto-rechner-was-von-ihrem-lohn-noch-uebrig-bleibt-a-223811.html",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076402&kid=1213135&bid=3962765",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076400&kid=1212996&bid=3961839",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3078844&kid=1600751&bid=5483956",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3076399&kid=1896236&bid=6478348",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3098102&kid=1896232&bid=6478286",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3780443&kid=1926526&bid=6578340",
+          "https": "supported"
+        },
+        {
+          "link": "http://ad8.adfarm1.adition.com/redi?sid=3088032&kid=1214236&bid=3966039",
+          "https": "supported"
+        },
+        {
+          "link": "http://abo.spiegel.de/?b=SPOHFOOTER&utm_source=spon&utm_medium=text&utm_content=SPOHFOOTER&utm_campaign=abbinder",
+          "https": "supported"
+        },
+        {
+          "link": "https://www.amazon.de/b?ie=UTF8&node=2478999031&tag=wwwspiegelde-21",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.manager-magazin.de/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.harvardbusinessmanager.de/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.buchreport.de/",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.buchaktuell.de/",
+          "https": "not supported",
+          "reason": "ETIMEDOUT"
+        },
+        {
+          "link": "http://www.der-audio-verlag.de/",
+          "https": "not supported",
+          "reason": "EPROTO"
+        },
+        {
+          "link": "https://twitter.com/intent/follow?screen_name=SPIEGELONLINE",
+          "https": "supported"
+        },
+        {
+          "link": "http://www.facebook.com/spiegelonline",
+          "https": "supported"
+        },
+        {
+          "link": "https://plus.google.com/106419678219919655169/posts",
+          "https": "supported"
+        }
+      ],
+      "count": 84
+    },
+    "internal": {
+      "links": [
+        "/meinspiegel/",
+        "/",
+        "/spiegel/",
+        "/sptv/",
+        "/schlagzeilen/",
+        "/wetter/",
+        "/nachrichtenarchiv/",
+        "/dienste/a-902432.html",
+        "/dienste/a-634260.html",
+        "/dienste/a-634549.html",
+        "/story/",
+        "/fotostrecken/",
+        "/multimedia/",
+        "/artikel/a-1040308.html",
+        "/impressum",
+        "/politik/",
+        "/politik/deutschland/",
+        "/politik/ausland/",
+        "/meinung/",
+        "/wirtschaft/",
+        "/wirtschaft/service/",
+        "/wirtschaft/service/versicherung-check-fuer-haftpflicht-hausrat-berufsunfaehigkeit-a-960380.html",
+        "/wirtschaft/unternehmen/",
+        "/wirtschaft/soziales/",
+        "/wirtschaft/service/brutto-netto-rechner-was-von-lohn-und-gehalt-uebrig-bleibt-a-223811.html",
+        "/panorama/",
+        "/panorama/justiz/",
+        "/panorama/leute/",
+        "/panorama/gesellschaft/",
+        "/sport/",
+        "/sport/fussball/fussball-live-liveticker-tabellen-und-statistiken-a-839944.html",
+        "/sport/fussball/",
+        "/sport/fussball/champions-league-live-ticker-spielplan-ergebnisse-tabelle-a-851014.html",
+        "/sport/formel1/",
+        "/sport/formel1/formel-1-live-ticker-ergebnisse-termine-fahrer-teams-a-958409.html",
+        "/kultur/",
+        "/kultur/kino/",
+        "/kultur/musik/",
+        "/kultur/tv/",
+        "/kultur/literatur/",
+        "/kultur/bestseller-buecher-belletristik-sachbuch-auf-spiegel-liste-a-458623.html",
+        "/video/",
+        "/netzwelt/",
+        "/netzwelt/netzpolitik/",
+        "/netzwelt/web/",
+        "/netzwelt/gadgets/",
+        "/netzwelt/games/",
+        "/netzwelt/apps/",
+        "/wissenschaft/",
+        "/wissenschaft/mensch/",
+        "/wissenschaft/natur/",
+        "/wissenschaft/technik/",
+        "/wissenschaft/weltall/",
+        "/wissenschaft/medizin/",
+        "/wissenschaft/uebermorgen/",
+        "/wissenschaft/mensch/sudoku-online-kostenlos-spielen-a-994416.html",
+        "/wissenschaft/mensch/kenken-kostenlos-online-spielen-a-994418.html",
+        "/wissenschaft/mensch/zahlenraetsel-street-online-und-kostenlos-spielen-a-994419.html",
+        "/gesundheit/",
+        "/gesundheit/diagnose/",
+        "/gesundheit/ernaehrung/",
+        "/gesundheit/psychologie/",
+        "/gesundheit/sex/",
+        "/gesundheit/schwangerschaft/",
+        "/gesundheit/ernaehrung/bmi-rechner-so-ermitteln-sie-ihren-body-mass-index-a-824673.html",
+        "/gesundheit/ernaehrung/kalorienrechner-so-ermitteln-sie-ihren-optimalen-kalorienverbrauch-a-832713.html",
+        "/einestages/",
+        "/einestages/thema/zeitzeugen/",
+        "/einestages/thema/erster_weltkrieg/",
+        "/karriere/",
+        "/lebenundlernen/",
+        "/lebenundlernen/schule/",
+        "/lebenundlernen/uni/",
+        "/lebenundlernen/job/",
+        "/bento/",
+        "/reise/",
+        "/reise/staedte/",
+        "/reise/deutschland/",
+        "/reise/europa/",
+        "/reise/fernweh/",
+        "/auto/",
+        "/auto/fahrberichte/",
+        "/auto/fahrkultur/",
+        "/stil/",
+        "/international/",
+        "/international/world/",
+        "/international/europe/",
+        "/international/germany/",
+        "/international/business/",
+        "/international/zeitgeist/",
+        "/international/tomorrow/",
+        "/international/a-1072062.html",
+        "/spiegelplus/",
+        "/spiegelplus/deutschland/",
+        "/spiegelplus/wirtschaft/",
+        "/spiegelplus/gesellschaft/",
+        "/spiegelplus/ausland/",
+        "/spiegelplus/sport/",
+        "/spiegelplus/wissenschaft/",
+        "/spiegelplus/kultur/",
+        "/spiegellive/",
+        "/spiegel/print/",
+        "/shop/",
+        "/thema/spiegelblog/",
+        "/sptv/magazin/",
+        "/sptv/reportage/",
+        "/sptv/programm/",
+        "/forum/",
+        "/forum/votes/a-589480.html",
+        "/extra/spon-forum-so-wollen-wir-debattieren-a-1032920.html",
+        "/thema/",
+        "/auto/aktuell/benzinpreisvergleich-die-guenstigste-tankstelle-in-ihrer-naehe-a-185826.html",
+        "/auto/aktuell/bussgeldrechner-was-zu-schnelles-fahren-kostet-a-244772.html",
+        "/lebenundlernen/schule/ferien-schulferien-und-feiertage-a-193925.html",
+        "/lebenundlernen/uni/studium-tipps-und-hilfe-fuer-uni-und-studentenleben-a-640620.html",
+        "/wirtschaft/service/versicherung-check-fuer-haftpflicht-hausrat-berufsunfaehigkeit-a-960380.html ",
+        "/meinspiegel/socialnetworks-trylogin-popup.html?sn=facebook&backUrl=",
+        "/meinspiegel/newpassword.html",
+        "/meinspiegel/artikel/a-703605.html",
+        "/meinspiegel/artikel/a-703606.html",
+        "register.html?feature=&backUrl=",
+        "registercustomer.html?feature=&backUrl=",
+        "/meinspiegel/mysubscriptions.html",
+        "/meinspiegel/changedata.html",
+        "/meinspiegel/changepassword.html",
+        "/meinspiegel/addcustomerid.html",
+        "/meinspiegel/myproducts.html",
+        "/newsletter/index.html#scrollto=box_verwalten",
+        "/meinspiegel/socialnetworks-overview.html",
+        "/meinspiegel/logout.html",
+        "/meinspiegel/cancelregistration.html",
+        "/dienste/besser-surfen-auf-spiegel-online-browser-und-cookies-a-634894.html",
+        "/impressum/",
+        "/dienste/a-639126.html",
+        "/extra/a-853891.html",
+        "/kontakt/",
+        "/hilfe/"
+      ],
+      "count": 137
+    }
+  },
+  "loginFormFound": true
+}

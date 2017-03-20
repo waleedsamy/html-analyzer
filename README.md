@@ -1,5 +1,5 @@
 # html-analyzer
-> Service to provide statistics about html page content
+> Service to provide statistics about html page content [for **demo** purpose, don't use on production, or send a merge request]
 
 [![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://registry.hub.docker.com/u/waleedsamy/html-analyzer/)
 
@@ -66,16 +66,19 @@
  * add more prometheus metrics, to discover where most of processing happen
  * nodejs workers and increased concurrent requests and total request number, there are **a performance gain**, but still need more enhancing
  ```bash
-  ab -p test/post-https-check.data  -T application/x-www-form-urlencoded -c 30 -n 200 http://localhost:3000/
-  > Percentage of the requests served within a certain time (ms)
-  >  50%    501
-  >  66%    612
-  >  75%    701
-  >  80%    754
-  >  90%    974
-  >  95%   1086
-  >  98%   1171
-  >  99%   1230
-  > 100%   1326 (longest request)
+    ab -p test/post-https-check.data  -T application/x-www-form-urlencoded -c 30 -n 200 http://localhost:3000/
+    > Percentage of the requests served within a certain time (ms)
+    >  50%    501
+    >  66%    612
+    >  75%    701
+    >  80%    754
+    >  90%    974
+    >  95%   1086
+    >  98%   1171
+    >  99%   1230
+    > 100%   1326 (longest request)
  ```
- * compare this implementation with another built with golang or java.
+ * compare this implementation with another built with golang or java
+
+##### Notes:
+ * sample servcie responses available in [sample-no-https-check.json](data/sample-no-https-check.json) and [sample-https-check.json](data/sample-https-check.json)
