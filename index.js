@@ -31,8 +31,6 @@ app.post('/', urlencodedParser, function(req, res) {
         req.body.checkhttps = (req.body.checkhttps === 'true');
     }
 
-    console.log(JSON.stringify(req.body));
-
     analyzer.load(req.body.url).then(function($) {
         when.all([
             analyzer.extractHtmlVersion($),

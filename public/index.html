@@ -82,46 +82,72 @@
                 posting.done(function(res) {
                     $("#result").empty();
 
-                    let add_row = function(key, key_col_class = 'col-2', value, value_col_class = 'col-10') {
+                    let add_row = function(key, value) {
                         $("#result").append(
                             `<div class="row justify-content-start">
-                            <div class="${key_col_class}">
+                            <div class="col-4">
                               ${key}
                             </div>
-                            <div class="${value_col_class}">
+                            <div class="col-8">
                               ${value}
                             </div>
                           </div>`
                         );
                     };
 
+                    //http://stackoverflow.com/a/23945027/5318264
+                    function extractDomain(url) {
+                        var domain;
+                        if (url.indexOf("://") > -1) {
+                            domain = url.split('/')[2];
+                        } else {
+                            domain = url.split('/')[0];
+                        }
+                        domain = domain.split(':')[0];
+                        return domain.trim();
+                    };
+
+                    let add_url_row = function(url, info) {
+                        let domain = extractDomain(url);
+                        $("#result").append(
+                            `<div class="row justify-content-start">
+                                <div class="col-6">
+                                  <a href='${url}' data-toggle='tooltip' title='${url}'>${domain}</a>
+                                </div>
+                                <div class="col-6">
+                                  ${info}
+                                </div>
+                              </div>`
+                        );
+                    };
+
                     for (let key in res) {
                         if (['url', 'html_version', 'title', 'loginFormFound'].includes(key)) {
-                            add_row(key, 'col-4', res[key], 'col-8');
+                            add_row(key, res[key]);
                         }
 
                         if (key === 'headings') {
                             for (let h in res['headings']) {
-                                add_row(h, 'col-2', res['headings'][h], 'col-10');
+                                add_row(h, res['headings'][h]);
                             }
                         }
 
                         if (key === 'links') {
-                            add_row('===================', 'col-6', '===================', 'col-6');
+                            add_row('===================', '===================');
                             let internal_links = res['links']['internal'];
                             let external_links = res['links']['external'];
-                            add_row('external links', 'col-4', external_links.count, 'col-6')
-                            add_row('internal links', 'col-4', internal_links.count, 'col-6')
-                            add_row('===================', 'col-6', '===================', 'col-6');
+                            add_row('external links', external_links.count)
+                            add_row('internal links', internal_links.count)
+                            add_row('===================', '===================');
                             if (external_links.links.length > 0 && external_links.links[0].https) {
                                 external_links.links.forEach(function(l) {
                                     if (l.https === 'supported') {
-                                        add_row(l.link, 'col-8', `${l.https}`, 'col-4');
+                                        add_url_row(l.link, `${l.https}`);
                                     } else {
-                                        add_row(l.link, 'col-8', `${l.https}, ${l.reason}`, 'col-4');
+                                        add_url_row(l.link, `${l.reason}`);
                                     }
                                 });
-                                add_row('===================', 'col-6', '===================', 'col-6');
+                                add_row('===================', '===================');
                             }
                         }
                     }
