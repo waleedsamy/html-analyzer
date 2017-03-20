@@ -44,7 +44,7 @@ app.post('/', urlencodedParser, function(req, res) {
                 method: 'post'
             });
             res.status(200).json({
-                msg: 'html-analyzer work in progress...',
+                msg: 'html-analyzer, source available at https://github.com/waleedsamy/html-analyzer',
                 url: req.body.url,
                 html_version: results[0],
                 title: results[1],

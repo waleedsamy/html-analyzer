@@ -10,7 +10,8 @@
   $ npm test
   $ npm start
   # open your browser at http://localhost:3000/
-  # curl -X POST -d 'url=https://www.spiegel.de/meinspiegel/login.html&=' "http://localhost:3000/"
+  # or call the service directly, use jq https://stedolan.github.io/jq/ for beautiful json
+  # curl -X POST -d 'url=https://www.spiegel.de/meinspiegel/login.html&checkhttps=false' "http://localhost:3000/"
 ```
 
 #### Run with docker
@@ -20,10 +21,18 @@
   # open your browser at http://localhost:3000/
 ```
 
-##### Information will be provided by the service
+#### Information will be provided by the service
  * HTML version of the document
  * Page title, if any
  * Number of heading grouped by heading level
  * Number of hypermedia links in the document, grouped by internal and external links according to page domain
  * Does page contain login form?
  * provide validation that each collected links is available via HTTP(S), in the case of an unreachable link, provide information about what went wrong
+
+#### implementation details
+ * promises everywhere, I used [whenjs](https://github.com/cujojs/when) as a A+ promise libarary
+ * frontend parts is simple as possible, single html page, no grunt or bower needed. but make sure you have an internet connection for jquery and bootstrap.
+ * [prometheus](https://github.com/prometheus/prometheus) metric exposed at `/metrics`, and provide metrics about 200, 400, 501, 502 status code.
+ * Login form detection work with all cases, I tested against. it ignore signup/register/join forms.
+ * checking https support against external urls, done by sending a `GET` request, I found a lot of sites provide 405(method not allowed) with `HEAD` request.
+ * checking https support cost some time, if site page has n external urls, it cost o(n). I had a timeout configured with 2 seconds(should be enough for most cases).
