@@ -37,3 +37,31 @@
  * checking https support against external urls, done by sending a `GET` request, I found a lot of sites provide 405(method not allowed) with `HEAD` request.
  * checking https support cost some time, if site page has n external urls, it cost o(n). I had a timeout configured with 2 seconds(should be enough for most cases).
  * docker image available `docker pull waleedsamy/html-analyzer`
+
+#### What to enhance
+ * performance enhancing, apache benchmark make it more obvious
+  ```bash
+    ab -p test/post-no-https-check.data  -T application/x-www-form-urlencoded -c 20 -n 50 http://localhost:3000/
+    > Percentage of the requests served within a certain time (ms)
+    > 50%    879
+    > 66%   1022
+    > 75%   1086
+    > 80%   1126
+    > 90%   1267
+    > 95%   1320
+    > 98%   1612
+    > 99%   1612
+    > 100%   1612 (longest request)
+    ab -p test/post-no-https-check.data  -T application/x-www-form-urlencoded -c 20 -n 50 http://localhost:3000/
+    > 50%    952
+    > 66%   1051
+    > 75%   1120
+    > 80%   1178
+    > 90%   1265
+    > 95%   1385
+    > 98%   1502
+    > 99%   1502
+    > 100%   1502 (longest request)
+  ```
+ * add more prometheus metrics, to discover where most of processing happen
+ * add nodejs workers
