@@ -7,8 +7,7 @@
   $ npm install -g yarn
   $ yarn install
   $ npm test
-  # CHECK_HTTPS env, will check if externals url support https or not
-  $ CHECK_HTTPS=true npm start
+  $ npm start
   # open your browser at http://localhost:3000/
   # curl -X POST  -d 'url=https://www.spiegel.de/meinspiegel/login.html&=' "http://localhost:3000/"
 ```

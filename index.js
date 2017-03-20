@@ -10,8 +10,7 @@ var express = require('express'),
         extended: false
     });
 
-const HTTP_REQUESTS_TOTAL = 'http_requests_total',
-    CHECK_HTTPS = process.env.CHECK_HTTPS || false;
+const HTTP_REQUESTS_TOTAL = 'http_requests_total';
 
 var httpRequestsTotal = new prom.Counter(HTTP_REQUESTS_TOTAL, 'count of http requests', ['code', 'method']);
 
@@ -28,13 +27,18 @@ app.post('/', urlencodedParser, function(req, res) {
         });
     }
 
+    if (req.body.checkhttps) {
+        req.body.checkhttps = (req.body.checkhttps === 'true');
+    }
+
+    console.log(JSON.stringify(req.body));
 
     analyzer.load(req.body.url).then(function($) {
         when.all([
             analyzer.extractHtmlVersion($),
             analyzer.extractPageTitle($),
             analyzer.extractHeadings($),
-            analyzer.extractHypermediaLinks($, process.env.CHECK_HTTPS),
+            analyzer.extractHypermediaLinks($, req.body.checkhttps),
             analyzer.containsLoginForm($)
         ]).then(function(results) {
             httpRequestsTotal.inc({
@@ -71,7 +75,6 @@ app.get('/metrics', function(req, res) {
 app.listen(3000, function() {
     logger.alert('Service starting', {
         host: 'localhost',
-        port: 3000,
-        CHECK_HTTPS: process.env.CHECK_HTTPS || false
+        port: 3000
     });
 })
