@@ -64,4 +64,18 @@
     > 100%   1502 (longest request)
   ```
  * add more prometheus metrics, to discover where most of processing happen
- * add nodejs workers
+ * nodejs workers and increased concurrent requests and total request number, there are **a performance gain**, but still need more enhancing
+ ```bash
+  ab -p test/post-https-check.data  -T application/x-www-form-urlencoded -c 30 -n 200 http://localhost:3000/
+  > Percentage of the requests served within a certain time (ms)
+  >  50%    501
+  >  66%    612
+  >  75%    701
+  >  80%    754
+  >  90%    974
+  >  95%   1086
+  >  98%   1171
+  >  99%   1230
+  > 100%   1326 (longest request)
+ ```
+ * compare this implementation with another built with golang or java.
