@@ -36,3 +36,4 @@
  * Login form detection work with all cases, I tested against. it ignore signup/register/join forms.
  * checking https support against external urls, done by sending a `GET` request, I found a lot of sites provide 405(method not allowed) with `HEAD` request.
  * checking https support cost some time, if site page has n external urls, it cost o(n). I had a timeout configured with 2 seconds(should be enough for most cases).
+ * docker image available `docker pull waleedsamy/html-analyzer`
